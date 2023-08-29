@@ -1786,9 +1786,86 @@ runExample(&quot;01_hello&quot;)
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Shiny apps are contained in a single script called app.R. The script
+app.R lives in a directory (for example, newdir/) and the app can be run
+with runApp(“newdir”).</p>
+<p><em>app.R</em> has three components:</p>
+<p>a user interface object</p>
+<p>a server function</p>
+<p>a call to the shinyApp function</p>
+<p>The user interface (ui) object controls the layout and appearance of
+your app. The server function contains the instructions that your
+computer needs to build your app. Finally the shinyApp function creates
+Shiny app objects from an explicit UI/server pair.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5saWJyYXJ5KHNoaW55KVxuXG4jIERlZmluZSBVSSBmb3IgYXBwIHRoYXQgZHJhd3MgYSBoaXN0b2dyYW0gLS0tLVxudWkgPC0gZmx1aWRQYWdlKFxuXG4gICMgQXBwIHRpdGxlIC0tLS1cbiAgdGl0bGVQYW5lbChcIkhlbGxvIFNoaW55IVwiKSxcblxuICAjIFNpZGViYXIgbGF5b3V0IHdpdGggaW5wdXQgYW5kIG91dHB1dCBkZWZpbml0aW9ucyAtLS0tXG4gIHNpZGViYXJMYXlvdXQoXG5cbiAgICAjIFNpZGViYXIgcGFuZWwgZm9yIGlucHV0cyAtLS0tXG4gICAgc2lkZWJhclBhbmVsKFxuXG4gICAgICAjIElucHV0OiBTbGlkZXIgZm9yIHRoZSBudW1iZXIgb2YgYmlucyAtLS0tXG4gICAgICBzbGlkZXJJbnB1dChpbnB1dElkID0gXCJiaW5zXCIsXG4gICAgICAgICAgICAgICAgICBsYWJlbCA9IFwiTnVtYmVyIG9mIGJpbnM6XCIsXG4gICAgICAgICAgICAgICAgICBtaW4gPSAxLFxuICAgICAgICAgICAgICAgICAgbWF4ID0gNTAsXG4gICAgICAgICAgICAgICAgICB2YWx1ZSA9IDMwKVxuXG4gICAgKSxcblxuICAgICMgTWFpbiBwYW5lbCBmb3IgZGlzcGxheWluZyBvdXRwdXRzIC0tLS1cbiAgICBtYWluUGFuZWwoXG5cbiAgICAgICMgT3V0cHV0OiBIaXN0b2dyYW0gLS0tLVxuICAgICAgcGxvdE91dHB1dChvdXRwdXRJZCA9IFwiZGlzdFBsb3RcIilcblxuICAgIClcbiAgKVxuKVxuXG4jIERlZmluZSBzZXJ2ZXIgbG9naWMgcmVxdWlyZWQgdG8gZHJhdyBhIGhpc3RvZ3JhbSAtLS0tXG5zZXJ2ZXIgPC0gZnVuY3Rpb24oaW5wdXQsIG91dHB1dCkge1xuXG4gICMgSGlzdG9ncmFtIG9mIHRoZSBPbGQgRmFpdGhmdWwgR2V5c2VyIERhdGEgLS0tLVxuICAjIHdpdGggcmVxdWVzdGVkIG51bWJlciBvZiBiaW5zXG4gICMgVGhpcyBleHByZXNzaW9uIHRoYXQgZ2VuZXJhdGVzIGEgaGlzdG9ncmFtIGlzIHdyYXBwZWQgaW4gYSBjYWxsXG4gICMgdG8gcmVuZGVyUGxvdCB0byBpbmRpY2F0ZSB0aGF0OlxuICAjXG4gICMgMS4gSXQgaXMgXCJyZWFjdGl2ZVwiIGFuZCB0aGVyZWZvcmUgc2hvdWxkIGJlIGF1dG9tYXRpY2FsbHlcbiAgIyAgICByZS1leGVjdXRlZCB3aGVuIGlucHV0cyAoaW5wdXQkYmlucykgY2hhbmdlXG4gICMgMi4gSXRzIG91dHB1dCB0eXBlIGlzIGEgcGxvdFxuICBvdXRwdXQkZGlzdFBsb3QgPC0gcmVuZGVyUGxvdCh7XG5cbiAgICB4ICAgIDwtIGZhaXRoZnVsJHdhaXRpbmdcbiAgICBiaW5zIDwtIHNlcShtaW4oeCksIG1heCh4KSwgbGVuZ3RoLm91dCA9IGlucHV0JGJpbnMgKyAxKVxuXG4gICAgaGlzdCh4LCBicmVha3MgPSBiaW5zLCBjb2wgPSBcIiMwMDdiYzJcIiwgYm9yZGVyID0gXCJ3aGl0ZVwiLFxuICAgICAgICAgeGxhYiA9IFwiV2FpdGluZyB0aW1lIHRvIG5leHQgZXJ1cHRpb24gKGluIG1pbnMpXCIsXG4gICAgICAgICBtYWluID0gXCJIaXN0b2dyYW0gb2Ygd2FpdGluZyB0aW1lc1wiKVxuXG4gICAgfSlcblxufVxuXG5zaGlueUFwcCh1aSA9IHVpLCBzZXJ2ZXIgPSBzZXJ2ZXIpXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+library(shiny)
+
+# Define UI for app that draws a histogram ----
+ui &lt;- fluidPage(
+
+  # App title ----
+  titlePanel(&quot;Hello Shiny!&quot;),
+
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = &quot;bins&quot;,
+                  label = &quot;Number of bins:&quot;,
+                  min = 1,
+                  max = 50,
+                  value = 30)
+
+    ),
+
+    # Main panel for displaying outputs ----
+    mainPanel(
+
+      # Output: Histogram ----
+      plotOutput(outputId = &quot;distPlot&quot;)
+
+    )
+  )
+)
+
+# Define server logic required to draw a histogram ----
+server &lt;- function(input, output) {
+
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is &quot;reactive&quot; and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot &lt;- renderPlot({
+
+    x    &lt;- faithful$waiting
+    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+
+    hist(x, breaks = bins, col = &quot;#007bc2&quot;, border = &quot;white&quot;,
+         xlab = &quot;Waiting time to next eruption (in mins)&quot;,
+         main = &quot;Histogram of waiting times&quot;)
+
+    })
+
+}
+
+shinyApp(ui = ui, server = server)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KYGBge3J9DQpwcmludCgiSGVsbG8gV29ybGQhIikNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuDQpgYGB7cn0NCg0KIyBTaGlueSBhcHAgZXhhbXBsZQ0KDQpsaWJyYXJ5KHNoaW55KQ0KcnVuRXhhbXBsZSgiMDFfaGVsbG8iKQ0KDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KYGBge3J9DQpwcmludCgiSGVsbG8gV29ybGQhIikNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuDQpgYGB7cn0NCg0KIyBTaGlueSBhcHAgZXhhbXBsZQ0KDQpsaWJyYXJ5KHNoaW55KQ0KcnVuRXhhbXBsZSgiMDFfaGVsbG8iKQ0KDQpgYGANClNoaW55IGFwcHMgYXJlIGNvbnRhaW5lZCBpbiBhIHNpbmdsZSBzY3JpcHQgY2FsbGVkIGFwcC5SLiBUaGUgc2NyaXB0IGFwcC5SIGxpdmVzIGluIGEgZGlyZWN0b3J5IChmb3IgZXhhbXBsZSwgbmV3ZGlyLykgYW5kIHRoZSBhcHAgY2FuIGJlIHJ1biB3aXRoIHJ1bkFwcCgibmV3ZGlyIikuDQoNCiphcHAuUiogaGFzIHRocmVlIGNvbXBvbmVudHM6DQoNCmEgdXNlciBpbnRlcmZhY2Ugb2JqZWN0DQoNCmEgc2VydmVyIGZ1bmN0aW9uDQoNCmEgY2FsbCB0byB0aGUgc2hpbnlBcHAgZnVuY3Rpb24NCg0KVGhlIHVzZXIgaW50ZXJmYWNlICh1aSkgb2JqZWN0IGNvbnRyb2xzIHRoZSBsYXlvdXQgYW5kIGFwcGVhcmFuY2Ugb2YgeW91ciBhcHAuIFRoZSBzZXJ2ZXIgZnVuY3Rpb24gY29udGFpbnMgdGhlIGluc3RydWN0aW9ucyB0aGF0IHlvdXIgY29tcHV0ZXIgbmVlZHMgdG8gYnVpbGQgeW91ciBhcHAuIEZpbmFsbHkgdGhlIHNoaW55QXBwIGZ1bmN0aW9uIGNyZWF0ZXMgU2hpbnkgYXBwIG9iamVjdHMgZnJvbSBhbiBleHBsaWNpdCBVSS9zZXJ2ZXIgcGFpci4NCg0KYGBge3J9DQoNCmxpYnJhcnkoc2hpbnkpDQoNCiMgRGVmaW5lIFVJIGZvciBhcHAgdGhhdCBkcmF3cyBhIGhpc3RvZ3JhbSAtLS0tDQp1aSA8LSBmbHVpZFBhZ2UoDQoNCiAgIyBBcHAgdGl0bGUgLS0tLQ0KICB0aXRsZVBhbmVsKCJIZWxsbyBTaGlueSEiKSwNCg0KICAjIFNpZGViYXIgbGF5b3V0IHdpdGggaW5wdXQgYW5kIG91dHB1dCBkZWZpbml0aW9ucyAtLS0tDQogIHNpZGViYXJMYXlvdXQoDQoNCiAgICAjIFNpZGViYXIgcGFuZWwgZm9yIGlucHV0cyAtLS0tDQogICAgc2lkZWJhclBhbmVsKA0KDQogICAgICAjIElucHV0OiBTbGlkZXIgZm9yIHRoZSBudW1iZXIgb2YgYmlucyAtLS0tDQogICAgICBzbGlkZXJJbnB1dChpbnB1dElkID0gImJpbnMiLA0KICAgICAgICAgICAgICAgICAgbGFiZWwgPSAiTnVtYmVyIG9mIGJpbnM6IiwNCiAgICAgICAgICAgICAgICAgIG1pbiA9IDEsDQogICAgICAgICAgICAgICAgICBtYXggPSA1MCwNCiAgICAgICAgICAgICAgICAgIHZhbHVlID0gMzApDQoNCiAgICApLA0KDQogICAgIyBNYWluIHBhbmVsIGZvciBkaXNwbGF5aW5nIG91dHB1dHMgLS0tLQ0KICAgIG1haW5QYW5lbCgNCg0KICAgICAgIyBPdXRwdXQ6IEhpc3RvZ3JhbSAtLS0tDQogICAgICBwbG90T3V0cHV0KG91dHB1dElkID0gImRpc3RQbG90IikNCg0KICAgICkNCiAgKQ0KKQ0KDQojIERlZmluZSBzZXJ2ZXIgbG9naWMgcmVxdWlyZWQgdG8gZHJhdyBhIGhpc3RvZ3JhbSAtLS0tDQpzZXJ2ZXIgPC0gZnVuY3Rpb24oaW5wdXQsIG91dHB1dCkgew0KDQogICMgSGlzdG9ncmFtIG9mIHRoZSBPbGQgRmFpdGhmdWwgR2V5c2VyIERhdGEgLS0tLQ0KICAjIHdpdGggcmVxdWVzdGVkIG51bWJlciBvZiBiaW5zDQogICMgVGhpcyBleHByZXNzaW9uIHRoYXQgZ2VuZXJhdGVzIGEgaGlzdG9ncmFtIGlzIHdyYXBwZWQgaW4gYSBjYWxsDQogICMgdG8gcmVuZGVyUGxvdCB0byBpbmRpY2F0ZSB0aGF0Og0KICAjDQogICMgMS4gSXQgaXMgInJlYWN0aXZlIiBhbmQgdGhlcmVmb3JlIHNob3VsZCBiZSBhdXRvbWF0aWNhbGx5DQogICMgICAgcmUtZXhlY3V0ZWQgd2hlbiBpbnB1dHMgKGlucHV0JGJpbnMpIGNoYW5nZQ0KICAjIDIuIEl0cyBvdXRwdXQgdHlwZSBpcyBhIHBsb3QNCiAgb3V0cHV0JGRpc3RQbG90IDwtIHJlbmRlclBsb3Qoew0KDQogICAgeCAgICA8LSBmYWl0aGZ1bCR3YWl0aW5nDQogICAgYmlucyA8LSBzZXEobWluKHgpLCBtYXgoeCksIGxlbmd0aC5vdXQgPSBpbnB1dCRiaW5zICsgMSkNCg0KICAgIGhpc3QoeCwgYnJlYWtzID0gYmlucywgY29sID0gIiMwMDdiYzIiLCBib3JkZXIgPSAid2hpdGUiLA0KICAgICAgICAgeGxhYiA9ICJXYWl0aW5nIHRpbWUgdG8gbmV4dCBlcnVwdGlvbiAoaW4gbWlucykiLA0KICAgICAgICAgbWFpbiA9ICJIaXN0b2dyYW0gb2Ygd2FpdGluZyB0aW1lcyIpDQoNCiAgICB9KQ0KDQp9DQoNCnNoaW55QXBwKHVpID0gdWksIHNlcnZlciA9IHNlcnZlcikNCg0KYGBgDQoNCg==</div>
 
 
 
