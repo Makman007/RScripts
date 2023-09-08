@@ -56,4 +56,17 @@ plot(iris$Sepal.Width, iris$Sepal.Length, col = "red",
 
 # Histograms
 hist(iris$Sepal.Width)
-hist(iris$Sepal.Width, col = "blue", xlab = "Sepal Width")
+hist(iris$Sepal.Width, col = "blue", xlab = "Sepal Width",labels = TRUE)
+
+# Feature plots
+install.packages("caret")
+library(caret)
+
+featurePlot(x = iris[,1:4],
+            y= iris$Species,
+            plot = "box",
+            strip = strip.custom(par.strip.text=list(cex=.7)),
+            scales = list(x = list(relation ="free"),
+                          y= list(relation = "free")))
+
+
